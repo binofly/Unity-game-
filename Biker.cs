@@ -125,11 +125,6 @@ public class Biker : MonoBehaviour
 	}
 	void Fall(string resAni)	
 	{
-//		if(Application.loadedLevel == 2)
-//		{
-//			traffic.onfall=1;
-////			_GCTestObject.sendRawBytesFall(resAni);		
-//		}
 		animation.Play(resAni);
 		Game.CameraObj.animation.CrossFade(resAni);
 
@@ -213,19 +208,8 @@ public class Biker : MonoBehaviour
 
 	void Accelerate ()
 	{
-//		if(Application.loadedLevel==2)
-//		{	
-//			if(GCTestObject.startGameOnNetWork)
-//			{
-				MoveBike();
-////				StartCoroutine("MoveBike");
-//			}
-//		}
-//		else
-//		{
-//			MoveBike();
-////			StartCoroutine("MoveBike");
-//		}
+		MoveBike();
+	}
 		
 		if( live)	
 		{
@@ -292,10 +276,6 @@ public class Biker : MonoBehaviour
 	}
 	void PropelBike()	
 	{
-//		if(Input.GetMouseButtonDown(0))
-//			ColorSmoke();
-//		if(Input.GetMouseButtonUp(0))
-//			WhiteSmoke();
 		if(colorS && !Input.GetMouseButton(0))
 			WhiteSmoke();
 		
@@ -328,26 +308,6 @@ public class Biker : MonoBehaviour
 		Preference.DistanceTravelled += offset;
 		Preference.KilometerPerHour = Mathf.Clamp(Preference.MapK(0, 45,moveSpeed , 0, 240), 0, 240);	// Global Update
 		
-//		yield return new WaitForSeconds(2.0f);
-//		Debug.Log("moveTargetSpeed on the Biker = " + moveTargetSpeed);
-//		Debug.Log("moveSpeed on the Biker = " + moveSpeed);
-		
-
-//		if(Application.loadedLevel == 2)
-//		{
-//			if(count > 300)
-//			{			
-////			yield return new WaitForSeconds(2.0f);
-//			_GCTestObject.sendRawBytesUpdatemoveTargetSpeed(moveTargetSpeed);
-//			_GCTestObject.sendRawBytesUpdatemoveSpeed(moveSpeed);
-//				count = 0;
-//			}
-//			else
-//			{
-//				count ++;
-//			}
-//			
-//		}
 
 	}
 
@@ -391,20 +351,10 @@ public class Biker : MonoBehaviour
 		if((leftButton) && (moveSpeed > 15.0f) && (live))
 		{
 			wheelTargetAngle = wheelFinalAngle;
-//			if(Application.loadedLevel == 2)
-//			{
-////				Debug.Log("WheelBike send on Network = " + leftButton);
-////				_GCTestObject.sendRawBytesWheelBike(leftButton);
-//			}
 		}
 		else
 		{
 			wheelTargetAngle = 0.0f;
-//			if(Application.loadedLevel == 2)
-//			{
-///				Debug.Log("WheelBike send on Network = " + leftButton);
-///				_GCTestObject.sendRawBytesWheelBike(leftButton);
-//			}
 		}
 		
 		wheelAngle = Mathf.SmoothDamp (wheelAngle, wheelTargetAngle, ref wheelVelocity, wheelSmoothSync);
